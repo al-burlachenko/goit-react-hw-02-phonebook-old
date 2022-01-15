@@ -16,8 +16,8 @@ class App extends Component {
     filter: "",
   };
 
-  AddContact = (currState) => {
-    const { name, number } = currState;
+  AddContact = (newContactData) => {
+    const { name, number } = newContactData;
     const { contacts } = this.state;
 
     const currentContact = {

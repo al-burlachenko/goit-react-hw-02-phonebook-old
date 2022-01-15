@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, ContactListElement } from "./ContactList.styled";
 
 class ContactList extends Component {
   render() {
@@ -9,15 +10,15 @@ class ContactList extends Component {
         {contacts.map((contact) => {
           const { name, number, id } = contact;
           return (
-            <li key={id}>
+            <ContactListElement key={id}>
               {name + ": " + number}
-              <button
+              <Button
                 type="button"
                 onClick={() => this.props.onDeleteContact(id)}
               >
                 Удалить
-              </button>
-            </li>
+              </Button>
+            </ContactListElement>
           );
         })}
       </ul>
