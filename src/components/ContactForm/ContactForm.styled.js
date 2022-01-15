@@ -20,6 +20,8 @@ export const Label = styled.label`
 export const Input = styled.input``;
 
 export const Button = styled.button`
+  cursor: pointer;
+
   width: 100px;
   border: 0.1px solid #858585;
   border-radius: 5px;

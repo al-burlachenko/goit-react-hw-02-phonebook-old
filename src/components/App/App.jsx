@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { nanoid } from "nanoid";
 
-import "./App.css";
-
 import ContactForm from "../ContactForm";
 import ContactList from "../ContactList";
 import Filter from "../Filter";
@@ -65,6 +63,7 @@ class App extends Component {
 
   render() {
     const visibleContacts = this.getVisibleContacts();
+    const { filter } = this.state;
 
     return (
       <>
@@ -72,7 +71,7 @@ class App extends Component {
         <ContactForm onSubmit={this.AddContact} />
 
         <h2>Contacts</h2>
-        <Filter filter={this.state.filter} onChange={this.changeFilter} />
+        <Filter filter={filter} onChange={this.changeFilter} />
         <ContactList
           contacts={visibleContacts}
           onDeleteContact={this.deleteContact}
