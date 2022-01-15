@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
 import { Button, ContactListElement } from "./ContactList.styled";
 
 class ContactList extends Component {
   render() {
-    const contacts = this.props.contacts;
+    const { contacts, onDeleteContact } = this.props;
 
     return (
       <ul>
@@ -12,10 +14,7 @@ class ContactList extends Component {
           return (
             <ContactListElement key={id}>
               {name + ": " + number}
-              <Button
-                type="button"
-                onClick={() => this.props.onDeleteContact(id)}
-              >
+              <Button type="button" onClick={() => onDeleteContact(id)}>
                 Удалить
               </Button>
             </ContactListElement>
@@ -27,3 +26,14 @@ class ContactList extends Component {
 }
 
 export default ContactList;
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  onDeleteContact: PropTypes.func.isRequired,
+};

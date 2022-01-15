@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { nanoid } from "nanoid";
+
 import "./App.css";
+
 import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import Filter from "../Filter/Filter";
-import { nanoid } from "nanoid";
 
 class App extends Component {
   state = {
@@ -80,3 +83,21 @@ class App extends Component {
 }
 
 export default App;
+
+ContactForm.propTypes = { onSubmit: PropTypes.func.isRequired };
+
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  onDeleteContact: PropTypes.func.isRequired,
+};
